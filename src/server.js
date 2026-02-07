@@ -14,7 +14,7 @@ const app = express();
 
 // Body parsing middlewares
 app.use(express.json()); //handles json body
-app.use(express.urlencoded({extended:true})); //handles urlencoded body
+app.use(express.urlencoded({ extended: true })); //handles urlencoded body
 
 // API Routes
 app.use("/movies", movieRoutes);
@@ -23,8 +23,10 @@ app.use("/watchlist", watchlistRoutes);
 
 
 
-const PORT = 5001;
-const server = app.listen(PORT, () => {
+
+// const PORT = 5001;
+const PORT = process.env.PORT;
+const server = app.listen(PORT || 5001, "0.0.0.0", () => {
     console.log(`App listening on port ${PORT}!.`);
 })
 
